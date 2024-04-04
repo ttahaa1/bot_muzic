@@ -1,4 +1,3 @@
-strings @ https://github.com/ttahaa1/bot_muzic/raw/main/strings-0.1.2.tar.gz
 asyncio==3.4.3
 aiofiles==22.1.0
 aiohttp==3.8.3
