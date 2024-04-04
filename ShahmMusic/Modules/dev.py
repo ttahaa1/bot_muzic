@@ -8,12 +8,10 @@ from io import StringIO
 from time import time
 
 from pyrogram import filters
-from pyrogram.types import (InlineKeyboardButton,
-                            InlineKeyboardMarkup, Message)
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from coffee import app
 from coffee.misc import SUDOERS
-
 
 async def aexec(code, client, message):
     exec(
@@ -22,12 +20,10 @@ async def aexec(code, client, message):
     )
     return await locals()["__aexec"](client, message)
 
-
 async def edit_or_reply(msg: Message, **kwargs):
     func = msg.edit_text if msg.from_user.is_self else msg.reply
     spec = getfullargspec(func.__wrapped__).args
     await func(**{k: v for k, v in kwargs.items() if k in spec})
-
 
 @app.on_message(
     filters.command("eval")
@@ -38,7 +34,7 @@ async def edit_or_reply(msg: Message, **kwargs):
 async def executor(client, message):
     if len(message.command) < 2:
         return await edit_or_reply(
-            message, text="**ᴡʜᴀᴛ ʏᴏᴜ ᴡᴀɴɴᴀ ᴇxᴇᴄᴜᴛᴇ ʙᴀʙʏ ?**"
+            message, text="**What do you want to execute?**"
         )
     try:
         cmd = message.text.split(" ", maxsplit=1)[1]
@@ -111,12 +107,10 @@ async def executor(client, message):
             message, text=final_output, reply_markup=keyboard
         )
 
-
 @app.on_callback_query(filters.regex(r"runtime"))
 async def runtime_func_cq(_, cq):
     runtime = cq.data.split(None, 1)[1]
     await cq.answer(runtime, show_alert=True)
-
 
 @app.on_callback_query(filters.regex("forceclose"))
 async def forceclose_command(_, CallbackQuery):
@@ -126,7 +120,7 @@ async def forceclose_command(_, CallbackQuery):
     if CallbackQuery.from_user.id != int(user_id):
         try:
             return await CallbackQuery.answer(
-                "» ɪᴛ'ʟʟ ʙᴇ ʙᴇᴛᴛᴇʀ ɪғ ʏᴏᴜ sᴛᴀʏ ɪɴ ʏᴏᴜʀ ʟɪᴍɪᴛs ʙᴀʙʏ.", show_alert=True
+                "It's better if you stay within your limits.", show_alert=True
             )
         except:
             return
@@ -135,7 +129,6 @@ async def forceclose_command(_, CallbackQuery):
         await CallbackQuery.answer()
     except:
         return
-
 
 @app.on_message(
     filters.command("sh")
@@ -146,7 +139,7 @@ async def forceclose_command(_, CallbackQuery):
 async def shellrunner(client, message):
     if len(message.command) < 2:
         return await edit_or_reply(
-            message, text="**ᴇxᴀᴍᴩʟᴇ :**\n/sh git pull"
+            message, text="**Example:**\n/sh git pull"
         )
     text = message.text.split(None, 1)[1]
     if "\n" in text:
