@@ -1,7 +1,7 @@
 {
     "name": "بوت ميوزك مجاني",
     "description": "سورس ميوزك بودا",
-    "logo": "https://telegra.ph/file/95bc0cd9d859ddc13d28a.jpg",
+    "logo": "https://telegra.ph/file/3e5039ee25df9814417c8.jpg.",
     "keywords": [
     "python3",
     "telegram",
@@ -43,7 +43,7 @@
       },
       "SUPPORT_CHAT": {
         "description": "ضـع رابـط جـروب الـدعـم",
-        "value": "https://t.me/z_gsx",
+        "value": "https://t.me/VGISV",
         "required": false
       }
     },
@@ -55,7 +55,7 @@
               "url": "heroku/nodejs"
           },
           {
-              "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+              "url": "https://telegra.ph/file/3e5039ee25df9814417c8.jpg"
           }
       ],
       "stack": "container"
